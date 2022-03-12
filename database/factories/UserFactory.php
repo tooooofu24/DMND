@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Consts\Pref;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -22,10 +23,11 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'tel' => $this->faker->phoneNumber(),
             'zip' => substr_replace(strval($this->faker->postcode()), '-', 3, 0),
+            'pref' => $this->faker->randomElement(Pref::LIST),
+            'city' => $this->faker->randomElement(Pref::LIST),
             'address' => $address,
-            'thumbnail_url' => $this->faker->imageUrl(),
+            'icon_url' => $this->faker->imageUrl(),
             'memo' => $this->faker->realText(),
-            'categories' => $this->faker->randomElements(range(1, 20), $this->faker->numberBetween(0, 5)),
             'money' => $this->faker->numberBetween(0, 100000),
             'point' => $this->faker->numberBetween(0, 10000),
         ];

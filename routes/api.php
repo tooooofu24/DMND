@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v0\AuthController;
+use App\Http\Controllers\Api\v0\OfferController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::prefix('v0')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::apiResource('offers', OfferController::class);
+    });
 });
