@@ -15,7 +15,9 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $query = Offer::query();
+        $query = Offer::query()
+            ->with(['buyer', 'seller', 'category.base_category', 'images'])
+            ->withCount(['favorites']);
 
         return $query->paginate();
     }

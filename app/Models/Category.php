@@ -9,4 +9,9 @@ class Category extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function base_category()
+    {
+        return $this->belongsTo(BaseCategory::class);
+    }
 }
