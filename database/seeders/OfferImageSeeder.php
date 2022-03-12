@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Offer;
+use App\Models\OfferImage;
 use Illuminate\Database\Seeder;
 
-class OfferSeeder extends Seeder
+class OfferImageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class OfferSeeder extends Seeder
      */
     public function run()
     {
-        Offer::factory()->count(100)->create();
+        OfferImage::factory()->count(30)->create();
     }
 }

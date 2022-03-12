@@ -15,7 +15,7 @@ class CreateOfferImagesTable extends Migration
     {
         Schema::create('offer_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('offer_id');
             $table->text('url');
             $table->timestamps();
         });

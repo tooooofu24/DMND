@@ -29,8 +29,8 @@ class CreateOffersTable extends Migration
             $table->text('memo')->nullable();
             $table->tinyInteger('eval_to_buyer')->nullable();
             $table->string('eval_memo_to_buyer')->nullable();
-            $table->integer('eval_to_seller')->nullable();
-            $table->tinyInteger('eval_memo_to_seller')->nullable();
+            $table->tinyInteger('eval_to_seller')->nullable();
+            $table->string('eval_memo_to_seller')->nullable();
             $table->timestamps();
         });
     }
