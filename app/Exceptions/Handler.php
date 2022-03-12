@@ -38,4 +38,13 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    protected function prepareResponse($request, Throwable $e)
+    {
+        // apiから始まるエンドポイントはjsonでエラーを返す
+        if (substr($request->path(), 0, 3) == 'api') {
+            return parent::prepareJsonResponse($request, $e);
+        }
+        return parent::prepareResponse($request, $e);
+    }
 }
