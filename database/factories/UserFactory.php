@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'city' => $this->faker->randomElement(Pref::LIST),
             'address' => $address,
             'icon_url' => $this->faker->imageUrl(),
-            'memo' => $this->faker->realText(),
+            'description' => $this->faker->realText(),
             'money' => $this->faker->numberBetween(0, 100000),
             'point' => $this->faker->numberBetween(0, 10000),
         ];

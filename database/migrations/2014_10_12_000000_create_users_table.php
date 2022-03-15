@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('address')->nullable();
             $table->text('icon_url')->nullable();
-            $table->text('memo')->nullable();
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('money')->default(0);
             $table->unsignedBigInteger('point')->default(0);
             $table->timestamp('email_verified_at')->nullable();

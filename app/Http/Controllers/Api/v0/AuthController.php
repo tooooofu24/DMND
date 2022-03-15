@@ -13,4 +13,8 @@ class AuthController extends Controller
         $token = User::first()->createToken('develop');
         return ['token' => $token->plainTextToken];
     }
+
+    public function login(Request $request)
+    {
+    }
 }
