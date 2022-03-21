@@ -15,7 +15,7 @@ class OfferImageFactory extends Factory
     {
         return [
             'offer_id' => $this->faker->numberBetween(1, 100),
-            'url' => $this->faker->imageUrl(),
+            'url' => $this->faker->imageUrl($width = 640, $height = 640)
         ];
     }
 }

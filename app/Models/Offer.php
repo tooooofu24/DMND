@@ -9,6 +9,8 @@ class Offer extends Model
 {
     use HasFactory;
 
+    protected $appends = ['image_urls'];
+
     public function buyer()
     {
         return $this->belongsTo(User::class, 'buyer_id');
@@ -34,9 +36,8 @@ class Offer extends Model
         return $this->hasMany(Favorite::class);
     }
 
-    public function getImageUrls()
+    public function getImageUrlsAttribute()
     {
-        $this->images;
-        return [];
+        return $this->images->pluck('url');
     }
 }
