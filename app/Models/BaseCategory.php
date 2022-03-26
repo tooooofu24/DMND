@@ -9,4 +9,9 @@ class BaseCategory extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }

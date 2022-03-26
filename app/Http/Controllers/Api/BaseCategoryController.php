@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\BaseCategory;
 use Illuminate\Http\Request;
 
 class BaseCategoryController extends Controller
@@ -14,7 +15,8 @@ class BaseCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $baseCategories = BaseCategory::with('categories')->get();
+        return $baseCategories;
     }
 
     /**
@@ -36,7 +38,8 @@ class BaseCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $baseCategory = BaseCategory::with('categories')->findOrFail($id);
+        return $baseCategory;
     }
 
     /**
