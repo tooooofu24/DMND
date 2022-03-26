@@ -15,8 +15,6 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $address_list = explode('  ', $this->faker->address());
-        $address = $address_list[1];
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -24,8 +22,8 @@ class UserFactory extends Factory
             'tel' => $this->faker->phoneNumber(),
             'zip' => substr_replace(strval($this->faker->postcode()), '-', 3, 0),
             'address1' => $this->faker->randomElement(Pref::LIST),
-            'address2' => $this->faker->randomElement(Pref::LIST),
-            'address3' => $address,
+            'address2' => $this->faker->city(),
+            'address3' => $this->faker->streetAddress(),
             'icon_url' => $this->faker->imageUrl($width = 640, $height = 640),
             'description' => $this->faker->realText(),
             'money' => $this->faker->numberBetween(0, 100000),
