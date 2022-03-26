@@ -23,9 +23,9 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'tel' => $this->faker->phoneNumber(),
             'zip' => substr_replace(strval($this->faker->postcode()), '-', 3, 0),
-            'pref' => $this->faker->randomElement(Pref::LIST),
-            'city' => $this->faker->randomElement(Pref::LIST),
-            'address' => $address,
+            'address1' => $this->faker->randomElement(Pref::LIST),
+            'address2' => $this->faker->randomElement(Pref::LIST),
+            'address3' => $address,
             'icon_url' => $this->faker->imageUrl($width = 640, $height = 640),
             'description' => $this->faker->realText(),
             'money' => $this->faker->numberBetween(0, 100000),

@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('tel');
             $table->string('zip')->nullable();
-            $table->enum('pref', Pref::LIST)->nullable();
-            $table->string('city')->nullable();
-            $table->string('address')->nullable();
+            $table->enum('address1', Pref::LIST)->nullable();
+            $table->string('address2')->nullable();
+            $table->string('address3')->nullable();
             $table->text('icon_url')->nullable();
             $table->text('description')->nullable();
             $table->unsignedBigInteger('money')->default(0);

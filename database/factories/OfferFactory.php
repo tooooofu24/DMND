@@ -21,7 +21,7 @@ class OfferFactory extends Factory
             'category_id' => $this->faker->numberBetween(1, 40),
             'condition' => $this->faker->numberBetween(1, 4),
             'received_pref' => $this->faker->randomElement(Pref::LIST),
-            'delivery_fee_paid_by' => $this->faker->numberBetween(1, 4),
+            'delivery_fee_paid_by' => $this->faker->numberBetween(0, 1),
             'payment_method' => $this->faker->numberBetween(1, 4),
             'price' => $this->faker->randomElement([1000, 2000, 3000, 4000, 5000, 10000]),
             'status' => $this->faker->numberBetween(1, 4),
