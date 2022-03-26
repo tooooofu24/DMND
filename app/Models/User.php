@@ -42,4 +42,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'categories' => 'json'
     ];
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function buyer_offers()
+    {
+        return $this->hasMany(Offer::class, 'buyer_id');
+    }
+
+    public function seller_offers()
+    {
+        return $this->hasMany(Offer::class, 'seller_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'user_category');
+    }
 }

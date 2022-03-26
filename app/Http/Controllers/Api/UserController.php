@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // 
     }
 
     /**
@@ -36,7 +37,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::with([
+            'favorites', 'buyer_offers', 'seller_offers', 'categories'
+        ])->findOrFail($id);
+        return $user;
     }
 
     /**
