@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api\v0;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Offer;
 use Illuminate\Http\Request;
 
-class OfferController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $query = Offer::query()
-            ->with(['buyer', 'seller', 'category.base_category', 'images'])
-            ->withCount(['favorites']);
-
-        return $query->paginate();
+        //
     }
 
     /**
