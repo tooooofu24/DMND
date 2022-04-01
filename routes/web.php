@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Offer;
+use App\UseCases\Offer\IndexAction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-    dd(Offer::first()->image_urls);
+    IndexAction::__invoke();
+    return view('welcome');
 });

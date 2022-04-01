@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Offer\IndexRequest;
 use App\Models\Offer;
+use App\UseCases\Offer\IndexAction;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
@@ -13,13 +15,10 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(IndexRequest $request, IndexAction $action)
     {
-        $query = Offer::query()
-            ->with(['buyer', 'seller', 'category.base_category', 'images'])
-            ->withCount(['favorites']);
-
-        return $query->paginate();
+        $response = $action($request);
+        return $response;
     }
 
     /**
