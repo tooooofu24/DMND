@@ -4,7 +4,9 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BaseCategoryController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\RecomendedOfferController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\FavoriteOfferController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,8 +27,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('register', [AuthController::class, 'register']);
 Route::middleware('auth:sanctum')->group(function () {
+
+    // User
     Route::apiResource('users', UserController::class);
+
+    // Offer
+    Route::get('offers/recomended', RecomendedOfferController::class);
+    Route::get('offers/favorite', FavoriteOfferController::class);
     Route::apiResource('offers', OfferController::class);
+
+    // Category, BaseCategory
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('base-categories', BaseCategoryController::class);
 });
