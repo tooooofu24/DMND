@@ -13,7 +13,7 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $query = Offer::query()
             ->with(['buyer', 'seller', 'category.base_category', 'images'])

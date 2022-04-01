@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\UseCases\User\ShowAction;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -35,12 +35,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, ShowAction $action)
     {
-        $user = User::with([
-            'favorites', 'buyer_offers', 'seller_offers', 'categories'
-        ])->findOrFail($id);
-        return $user;
+        $response = $action($id);
+        return $response;
     }
 
     /**
