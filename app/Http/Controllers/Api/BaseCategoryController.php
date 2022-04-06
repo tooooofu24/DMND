@@ -40,7 +40,7 @@ class BaseCategoryController extends Controller
     public function show($id)
     {
         $baseCategory = BaseCategory::with('categories')->findOrFail($id);
-        return $baseCategory;
+        return new BaseCategoryResource($baseCategory);
     }
 
     /**
