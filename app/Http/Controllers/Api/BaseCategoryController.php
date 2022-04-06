@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\BaseCategoryResource;
 use App\Models\BaseCategory;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class BaseCategoryController extends Controller
     public function index()
     {
         $baseCategories = BaseCategory::with('categories')->get();
-        return $baseCategories;
+        return BaseCategoryResource::collection($baseCategories);
     }
 
     /**
