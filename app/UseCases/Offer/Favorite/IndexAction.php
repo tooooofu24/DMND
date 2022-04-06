@@ -19,6 +19,8 @@ class IndexAction
             $query->where('user_id', $request->user_id);
         });
 
-        return OfferResource::collection($query->paginate());
+        $limit = $request->input('limit', 20);
+
+        return OfferResource::collection($query->paginate($limit));
     }
 }

@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class RecomendedOfferController extends Controller
 {
-    public function __invoke(IndexAction $action)
+    public function __invoke(Request $request, IndexAction $action)
     {
-        $response = $action();
+        $response = $action($request);
         return $response;
     }
 }

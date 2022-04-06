@@ -14,6 +14,8 @@ class IndexAction
             ->with(['buyer', 'seller', 'category.baseCategory', 'images'])
             ->withCount(['favorites']);
 
+        $limit = $request->input('limit', 20);
+
         // 文字列検索
         if ($request->q) {
             $query = $query->where('title', 'like', "%{$request->q}%");
@@ -36,6 +38,16 @@ class IndexAction
             $query = $query->where('condition', $request->condition);
         }
 
-        return OfferResource::collection($query->paginate());
+        // buyer_idで検索
+        if ($request->buyer_id) {
+            $query = $query->where('buyer_id', $request->buyer_id);
+        }
+
+        // seller_idで検索
+        if ($request->seller_id) {
+            $query = $query->where('seller_id', $request->seller_id);
+        }
+
+        return OfferResource::collection($query->paginate($limit));
     }
 }
