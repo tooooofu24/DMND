@@ -20,12 +20,12 @@ class CreateOffersTable extends Migration
             $table->unsignedBigInteger('buyer_id');
             $table->unsignedBigInteger('seller_id')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->tinyInteger('condition')->comment('10: 新品未使用, 20: 美中古・未使用に近い, 30: 目立った傷、汚れなし, 40: 状態は問わない');
+            $table->integer('condition')->comment(App\Consts\Condition::DESCRIPTION);
             $table->enum('received_pref', Pref::LIST)->nullable();
-            $table->tinyInteger('delivery_fee_payment_burden')->comment('送料負担');
-            $table->tinyInteger('payment_method')->comment('支払い方法');
+            $table->integer('delivery_fee_payment_burden')->comment('送料負担');
+            $table->integer('payment_method')->comment('支払い方法');
             $table->unsignedBigInteger('price');
-            $table->tinyInteger('status')->default(0)->comment('商品の販売、購入ステータス(0 売り手なし, 10 売り手がDEALした, 20 買い手がDEAL承諾した, 30 買い手が支払いした, 40 売り手が発送通知した, 50 買い手が受取通知した)');
+            $table->integer('status')->default(0)->comment(App\Consts\Status::DESCRIPTION);
             $table->text('description')->nullable();
             $table->timestamps();
         });
