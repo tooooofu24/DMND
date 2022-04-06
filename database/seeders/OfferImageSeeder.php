@@ -14,6 +14,6 @@ class OfferImageSeeder extends Seeder
      */
     public function run()
     {
-        OfferImage::factory()->count(30)->create();
+        OfferImage::factory()->count(\App\Consts\Seed::OFFERIMAGECOUNT)->create();
     }
 }

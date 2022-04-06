@@ -14,8 +14,8 @@ class FavoriteFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(1, 20),
-            'offer_id' => $this->faker->numberBetween(1, 100)
+            'user_id' => $this->faker->numberBetween(1, \App\Consts\Seed::USERCOUNT),
+            'offer_id' => $this->faker->numberBetween(1, \App\Consts\Seed::OFFERCOUNT),
         ];
     }
 }

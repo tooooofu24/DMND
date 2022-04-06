@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TalkRoom;
 use Illuminate\Database\Seeder;
 
 class TalkRoomSeeder extends Seeder
@@ -13,6 +14,6 @@ class TalkRoomSeeder extends Seeder
      */
     public function run()
     {
-        //
+        TalkRoom::factory()->count(\App\Consts\Seed::TALKROOMCOUNT)->create();
     }
 }

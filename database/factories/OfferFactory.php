@@ -18,9 +18,9 @@ class OfferFactory extends Factory
     {
         return [
             'title' => $this->faker->realText(),
-            'buyer_id' => $this->faker->numberBetween(1, 20),
-            'seller_id' => $this->faker->numberBetween(1, 20),
-            'category_id' => $this->faker->numberBetween(1, 40),
+            'buyer_id' => $this->faker->numberBetween(1, \App\Consts\Seed::USERCOUNT),
+            'seller_id' => $this->faker->numberBetween(1, \App\Consts\Seed::USERCOUNT),
+            'category_id' => $this->faker->numberBetween(1, \App\Consts\Seed::CATEGORYCOUNT),
             'condition' => $this->faker->randomElement(Condition::LIST),
             'received_pref' => $this->faker->randomElement(Pref::LIST),
             'delivery_fee_payment_burden' => $this->faker->numberBetween(0, 1),

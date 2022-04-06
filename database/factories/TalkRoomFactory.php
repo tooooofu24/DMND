@@ -14,9 +14,9 @@ class TalkRoomFactory extends Factory
     public function definition()
     {
         return [
-            'offer_id' => '',
-            'seller_id' => '',
-            'buyer_id' => ''
+            'offer_id' => $this->faker->numberBetween(1, \App\Consts\Seed::OFFERCOUNT),
+            'seller_id' => $this->faker->numberBetween(1, \App\Consts\Seed::USERCOUNT),
+            'buyer_id' => $this->faker->numberBetween(1, \App\Consts\Seed::USERCOUNT),
         ];
     }
 }

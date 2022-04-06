@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class OfferImageFactory extends Factory
+class UserCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,8 @@ class OfferImageFactory extends Factory
     public function definition()
     {
         return [
-            'offer_id' => $this->faker->numberBetween(1, \App\Consts\Seed::OFFERCOUNT),
-            'url' => $this->faker->imageUrl($width = 640, $height = 640)
+            'user_id' => $this->faker->numberBetween(1, \App\Consts\Seed::USERCOUNT),
+            'category_id' => $this->faker->numberBetween(1, \App\Consts\Seed::CATEGORYCOUNT),
         ];
     }
 }

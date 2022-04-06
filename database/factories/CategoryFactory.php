@@ -15,7 +15,7 @@ class CategoryFactory extends Factory
     {
         return [
             'base_category_id' => $this->faker->numberBetween(1, 7),
-            'name' => $this->faker->realText(),
+            'name' => $this->faker->realText(10),
         ];
     }
 }

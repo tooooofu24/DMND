@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\UserCategory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class UserCategorySeeder extends Seeder
 {
@@ -14,11 +14,6 @@ class UserCategorySeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
-            DB::table('user_category')->insert([
-                'user_id' => random_int(1, 20),
-                'category_id' => random_int(1, 40)
-            ]);
-        }
+        UserCategory::factory()->count(\App\Consts\Seed::USERCATEGORYCOUNT)->create();
     }
 }
