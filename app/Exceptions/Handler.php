@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Arr;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -39,12 +41,34 @@ class Handler extends ExceptionHandler
         });
     }
 
+    /**
+     * Prepare a response for the given exception.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $e
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     protected function prepareResponse($request, Throwable $e)
     {
         // apiから始まるエンドポイントはjsonでエラーを返す
-        if (substr($request->path(), 0, 3) == 'api') {
+        if (\Illuminate\Support\Facades\Route::is('api.*')) {
             return parent::prepareJsonResponse($request, $e);
         }
         return parent::prepareResponse($request, $e);
+    }
+
+    /**
+     * Convert the given exception to an array.
+     *
+     * @param  \Throwable  $e
+     * @return array
+     */
+    protected function convertExceptionToArray(Throwable $e)
+    {
+        return [
+            'message' => $e->getMessage(),
+            'exception' => get_class($e),
+            'status_code' => $this->isHttpException($e) ? $e->getStatusCode() : 500,
+        ];
     }
 }

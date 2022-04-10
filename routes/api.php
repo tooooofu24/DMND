@@ -21,22 +21,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(['as' => 'api.'], function () {
+    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+        return $request->user();
+    });
 
-Route::post('register', [AuthController::class, 'register']);
-Route::middleware('auth:sanctum')->group(function () {
+    Route::post('register', [AuthController::class, 'register']);
+    Route::middleware('auth:sanctum')->group(function () {
 
-    // User
-    Route::apiResource('users', UserController::class);
+        // User
+        Route::apiResource('users', UserController::class);
 
-    // Offer
-    Route::get('offers/recomended', RecomendedOfferController::class);
-    Route::get('offers/favorite', FavoriteOfferController::class);
-    Route::apiResource('offers', OfferController::class);
+        // Offer
+        Route::get('offers/recomended', RecomendedOfferController::class);
+        Route::get('offers/favorite', FavoriteOfferController::class);
+        Route::apiResource('offers', OfferController::class);
 
-    // Category, BaseCategory
-    Route::apiResource('categories', CategoryController::class);
-    Route::apiResource('base-categories', BaseCategoryController::class);
+        // Category, BaseCategory
+        Route::apiResource('categories', CategoryController::class);
+        Route::apiResource('base-categories', BaseCategoryController::class);
+    });
 });
