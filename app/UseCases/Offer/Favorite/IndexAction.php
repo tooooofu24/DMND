@@ -10,8 +10,7 @@ class IndexAction
 {
     public function __invoke(IndexRequest $request)
     {
-        $query = Offer::query()
-            ->with(['buyer', 'seller', 'category.baseCategory', 'images', 'favorites'])
+        $query = Offer::WithAllRelations()
             ->withCount(['favorites']);
 
         // userがいいねした投稿で絞り込み

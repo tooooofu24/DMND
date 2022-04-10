@@ -10,9 +10,7 @@ class IndexAction
 {
     public function __invoke(IndexRequest $request)
     {
-        $query = Offer::query()
-            ->with(['buyer', 'seller', 'category.baseCategory', 'images'])
-            ->withCount(['favorites'])
+        $query = Offer::WithAllRelations()
             ->inRandomOrder();
 
         $limit = $request->input('limit', 20);

@@ -11,6 +11,8 @@ class Offer extends Model
 
     protected $appends = ['image_urls'];
 
+    //  Relationships
+
     public function buyer()
     {
         return $this->belongsTo(User::class, 'buyer_id');
@@ -36,8 +38,18 @@ class Offer extends Model
         return $this->hasMany(Favorite::class);
     }
 
+    // Attributes
+
     public function getImageUrlsAttribute()
     {
         return $this->images->pluck('url');
+    }
+
+    // Scopes
+    public function scopeWithAllRelations($query)
+    {
+        return $query
+            ->with(['buyer', 'seller', 'category.baseCategory', 'images'])
+            ->withCount(['favorites']);
     }
 }
