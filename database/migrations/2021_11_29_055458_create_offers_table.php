@@ -20,12 +20,12 @@ class CreateOffersTable extends Migration
             $table->unsignedBigInteger('buyer_id');
             $table->unsignedBigInteger('seller_id')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->integer('condition')->comment(App\Consts\Condition::DESCRIPTION);
+            $table->integer('condition')->comment(App\Consts\Offer\OfferCondition::DESCRIPTION);
             $table->enum('received_pref', Pref::LIST)->nullable();
             $table->integer('delivery_fee_payment_burden')->comment('送料負担');
             $table->integer('payment_method')->comment('支払い方法');
             $table->unsignedBigInteger('price');
-            $table->integer('status')->default(0)->comment(App\Consts\Status::DESCRIPTION);
+            $table->integer('status')->default(0)->comment(App\Consts\Offer\OfferStatus::DESCRIPTION);
             $table->text('description')->nullable();
             $table->timestamps();
         });

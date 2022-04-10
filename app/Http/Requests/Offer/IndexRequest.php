@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Offer;
 
-use App\Consts\Condition;
+use App\Consts\Offer\OfferCondition;
 use App\Http\Requests\ApiCommonRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -32,7 +32,7 @@ class IndexRequest extends ApiCommonRequest
             'q' => ['nullable', 'string'],
             'category_id_list' => ['nullable', 'array'],
             'is_open' => ['nullable', 'bool'],
-            'condition' => ['nullable', 'integer', Rule::in(Condition::LIST),]
+            'condition' => ['nullable', 'integer', Rule::in(OfferCondition::LIST),]
         ];
     }
 }

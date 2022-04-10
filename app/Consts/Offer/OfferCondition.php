@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Consts;
+namespace App\Consts\Offer;
 
-class Condition
+class OfferCondition
 {
     const LIST = [
         100, // 新品未使用

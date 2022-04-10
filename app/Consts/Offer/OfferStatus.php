@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Consts;
+namespace App\Consts\Offer;
 
-class Status
+class OfferStatus
 {
     const LIST = [
         0, // 売り手なし
