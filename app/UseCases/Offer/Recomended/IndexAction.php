@@ -2,13 +2,13 @@
 
 namespace App\UseCases\Offer\Recomended;
 
+use App\Http\Requests\Offer\Recomended\IndexRequest;
 use App\Http\Resources\OfferResource;
 use App\Models\Offer;
-use Illuminate\Http\Request;
 
 class IndexAction
 {
-    public function __invoke(Request $request)
+    public function __invoke(IndexRequest $request)
     {
         $query = Offer::query()
             ->with(['buyer', 'seller', 'category.baseCategory', 'images'])

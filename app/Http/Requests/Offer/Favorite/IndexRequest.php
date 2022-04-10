@@ -25,6 +25,8 @@ class IndexRequest extends ApiCommonRequest
     public function rules()
     {
         return [
+            'page' => ['nullable', 'integer'],
+            'limit' => ['nullable', 'integer'],
             'user_id' => ['required', 'integer']
         ];
     }

@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Offer;
+namespace App\Http\Requests\Offer\Recomended;
 
-use App\Consts\Condition;
 use App\Http\Requests\ApiCommonRequest;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class IndexRequest extends ApiCommonRequest
 {
@@ -29,10 +27,6 @@ class IndexRequest extends ApiCommonRequest
         return [
             'page' => ['nullable', 'integer'],
             'limit' => ['nullable', 'integer'],
-            'q' => ['nullable', 'string'],
-            'category_id_list' => ['nullable', 'array'],
-            'is_open' => ['nullable', 'bool'],
-            'condition' => ['nullable', 'integer', Rule::in(Condition::LIST),]
         ];
     }
 }
