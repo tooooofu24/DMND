@@ -10,7 +10,7 @@ class Seed
     const MESSAGECOUNT = 100;
     const TALKROOMCOUNT = 100;
     const USERCOUNT = 100;
-    const CATEGORYCOUNT = 100;
+    const CATEGORYCOUNT = 67;
     const USERCATEGORYCOUNT = 100;
     const EVALUATIONSCOUNT = 100;
 }
