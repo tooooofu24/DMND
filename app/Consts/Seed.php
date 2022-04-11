@@ -12,4 +12,5 @@ class Seed
     const USERCOUNT = 100;
     const CATEGORYCOUNT = 100;
     const USERCATEGORYCOUNT = 100;
+    const EVALUATIONSCOUNT = 100;
 }

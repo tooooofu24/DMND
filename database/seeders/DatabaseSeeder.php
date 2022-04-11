@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserCategorySeeder::class,
             UserSeeder::class,
             FavoriteSeeder::class,
+            EvaluationSeeder::class,
         ]);
     }
 }

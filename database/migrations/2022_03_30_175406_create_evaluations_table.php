@@ -20,7 +20,7 @@ class CreateEvaluationsTable extends Migration
             $table->unsignedBigInteger('taker_id')->comment('被評価者');
             $table->boolean('type')->comment('0: 購入者からの評価, 1: 販売者からの評価');
             $table->tinyInteger('value')->comment('1~5');
-            $table->string('コメント')->default('');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }
