@@ -26,6 +26,7 @@ class CreateOffersTable extends Migration
             $table->integer('payment_method')->comment('支払い方法');
             $table->unsignedBigInteger('price');
             $table->integer('status')->default(0)->comment(App\Consts\Offer\OfferStatus::DESCRIPTION);
+            $table->string('arrival_memo')->nullable()->comment('到着希望日（フリーテキスト）');
             $table->text('description')->nullable();
             $table->timestamps();
         });

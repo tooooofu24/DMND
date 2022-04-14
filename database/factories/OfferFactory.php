@@ -27,6 +27,7 @@ class OfferFactory extends Factory
             'payment_method' => $this->faker->numberBetween(1, 4),
             'price' => $this->faker->randomElement([1000, 2000, 3000, 4000, 5000, 10000]),
             'status' => $this->faker->randomElement(OfferStatus::LIST),
+            'arrival_memo' => $this->faker->realText(35),
             'description' => $this->faker->realText(),
         ];
     }
