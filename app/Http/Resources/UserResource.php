@@ -27,8 +27,8 @@ class UserResource extends JsonResource
             "description" => $this->description,
             "money" => $this->money,
             "point" => $this->point,
-            "evalation_count" => $this->evalations_count,
-            "evalation_score" => $this->evalationScore,
+            "evaluation_count" => $this->evaluations_count,
+            "evaluation_score" => $this->evaluationScore,
         ];
     }
 }

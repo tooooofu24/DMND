@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->hasMany(Offer::class, 'seller_id');
     }
 
-    public function evalations()
+    public function evaluations()
     {
         return $this->hasMany(Evaluation::class, 'taker_id');
     }
@@ -72,9 +72,9 @@ class User extends Authenticatable
 
     // Attributes
 
-    public function getEvalationScoreAttribute()
+    public function getEvaluationScoreAttribute()
     {
-        return round($this->evalations->pluck('value')->average(), 1);
+        return round($this->evaluations->pluck('value')->average(), 1);
     }
 
     // Scopes
@@ -82,7 +82,7 @@ class User extends Authenticatable
     public function scopeWithAllRelations($query)
     {
         return $query
-            ->with(['evalations'])
-            ->withCount(['evalations']);
+            ->with(['evalautions'])
+            ->withCount(['evaluations']);
     }
 }
