@@ -43,23 +43,46 @@ class User extends Authenticatable
         'categories' => 'json'
     ];
 
+    //  Relationships
+
     public function favorites()
     {
         return $this->hasMany(Favorite::class);
     }
 
-    public function buyer_offers()
+    public function buyerOffers()
     {
         return $this->hasMany(Offer::class, 'buyer_id');
     }
 
-    public function seller_offers()
+    public function sellerOffers()
     {
         return $this->hasMany(Offer::class, 'seller_id');
+    }
+
+    public function evalations()
+    {
+        return $this->hasMany(Evaluation::class, 'taker_id');
     }
 
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'user_category');
+    }
+
+    // Attributes
+
+    public function getEvalationScoreAttribute()
+    {
+        return round($this->evalations->pluck('value')->average(), 1);
+    }
+
+    // Scopes
+
+    public function scopeWithAllRelations($query)
+    {
+        return $query
+            ->with(['evalations'])
+            ->withCount(['evalations']);
     }
 }

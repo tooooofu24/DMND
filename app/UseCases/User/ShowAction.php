@@ -9,7 +9,7 @@ class ShowAction
 {
     public function __invoke($id)
     {
-        $user = User::with([])->findOrFail($id);
+        $user = User::withAllrelations()->findOrFail($id);
         return new UserResource($user);
     }
 }
