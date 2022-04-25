@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Favorite\StoreRequest;
+use App\Models\Favorite;
+use App\UseCases\Favorite\DestroyAction;
 use App\UseCases\Favorite\StoreAction;
 use Illuminate\Http\Request;
 
@@ -60,8 +62,11 @@ class FavoriteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, DestroyAction $action)
     {
-        //
+        $favorite = Favorite::findOrFail($id);
+        $this->authorize('delete', $favorite);
+        $response = $action($favorite);
+        return $response;
     }
 }
