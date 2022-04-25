@@ -18,9 +18,7 @@ class ApiCommonRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json([
-            'errors' => $validator->errors()->all(),
-        ], 400));
+        return response()->validation_error($validator);
     }
 
     /**

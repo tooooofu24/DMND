@@ -3,6 +3,7 @@
 namespace App\UseCases\Offer;
 
 use App\Http\Requests\Offer\IndexRequest;
+use App\Http\Resources\OfferCollection;
 use App\Http\Resources\OfferResource;
 use App\Models\Offer;
 
@@ -46,6 +47,6 @@ class IndexAction
             $query = $query->where('seller_id', $request->seller_id);
         }
 
-        return OfferResource::collection($query->paginate($limit));
+        return new OfferCollection($query->paginate($limit));
     }
 }

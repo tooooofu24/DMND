@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MessageResource extends JsonResource
+class MessageResource extends ApiCommonResource
 {
     /**
      * Transform the resource into an array.

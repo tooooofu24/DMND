@@ -66,9 +66,9 @@ class Handler extends ExceptionHandler
     protected function convertExceptionToArray(Throwable $e)
     {
         return [
+            'status_code' => $this->isHttpException($e) ? $e->getStatusCode() : 500,
             'message' => $e->getMessage(),
             'exception' => get_class($e),
-            'status_code' => $this->isHttpException($e) ? $e->getStatusCode() : 500,
         ];
     }
 }
