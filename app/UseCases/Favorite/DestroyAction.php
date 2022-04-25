@@ -9,6 +9,6 @@ class DestroyAction
     public function __invoke($favorite)
     {
         $favorite->delete();
-        return;
+        return response()->success('いいね解除しました');
     }
 }
