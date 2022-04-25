@@ -82,7 +82,7 @@ class User extends Authenticatable
     public function scopeWithAllRelations($query)
     {
         return $query
-            ->with(['evalautions'])
+            ->with(['evaluations'])
             ->withCount(['evaluations']);
     }
 }

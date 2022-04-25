@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\OfferController;
 use App\Http\Controllers\Api\RecomendedOfferController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\FavoriteOfferController;
+use App\Http\Controllers\Api\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,9 @@ Route::group(['as' => 'api.'], function () {
 
         // Favorite
         Route::apiResource('favorites', FavoriteController::class);
+
+        // Message
+        Route::apiResource('messages', MessageController::class);
 
         // Category, BaseCategory
         Route::apiResource('categories', CategoryController::class);

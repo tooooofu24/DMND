@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FavoriteSeeder::class,
             EvaluationSeeder::class,
+            MessageSeeder::class,
+            TalkRoomSeeder::class,
         ]);
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Message\IndexRequest;
 use App\Models\Message;
+use App\UseCases\Message\IndexAction;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -13,9 +15,10 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(IndexRequest $request, IndexAction $action)
     {
-        //
+        $response = $action($request);
+        return $response;
     }
 
     /**
