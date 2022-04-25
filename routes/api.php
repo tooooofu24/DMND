@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BaseCategoryController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\OfferController;
 use App\Http\Controllers\Api\RecomendedOfferController;
 use App\Http\Controllers\Api\UserController;
@@ -36,6 +37,9 @@ Route::group(['as' => 'api.'], function () {
         Route::get('offers/recomended', RecomendedOfferController::class);
         Route::get('offers/favorite', FavoriteOfferController::class);
         Route::apiResource('offers', OfferController::class);
+
+        // Favorite
+        Route::apiResource('favorites', FavoriteController::class);
 
         // Category, BaseCategory
         Route::apiResource('categories', CategoryController::class);

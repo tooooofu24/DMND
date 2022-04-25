@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Favorite\StoreRequest;
+use App\UseCases\Favorite\StoreAction;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
@@ -23,9 +25,10 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request, StoreAction $action)
     {
-        //
+        $response = $action($request);
+        return $response;
     }
 
     /**
