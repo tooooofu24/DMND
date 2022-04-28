@@ -3,6 +3,7 @@
 namespace App\UseCases\Offer\Recomended;
 
 use App\Http\Requests\Offer\Recomended\IndexRequest;
+use App\Http\Resources\OfferCollection;
 use App\Http\Resources\OfferResource;
 use App\Models\Offer;
 
@@ -15,6 +16,6 @@ class IndexAction
 
         $limit = $request->input('limit', 20);
 
-        return OfferResource::collection($query->paginate($limit));
+        return new OfferCollection($query->paginate($limit));
     }
 }

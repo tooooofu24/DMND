@@ -3,6 +3,7 @@
 namespace App\UseCases\Message;
 
 use App\Http\Requests\Message\IndexRequest;
+use App\Http\Resources\MessageCollection;
 use App\Http\Resources\MessageResource;
 use App\Models\Message;
 
@@ -16,6 +17,6 @@ class IndexAction
 
         $limit = $request->input('limit', 20);
 
-        return MessageResource::collection($query->paginate($limit));
+        return new MessageCollection($query->paginate($limit));
     }
 }
