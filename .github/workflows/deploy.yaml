@@ -12,7 +12,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.SSH_DEPLOY_DIR }}
+            git pull origin master
             php artisan migrate:fresh --seed --env=testing
             php artisan test
             php artisan migrate --force
-            git pull origin master
