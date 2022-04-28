@@ -12,4 +12,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.SSH_DEPLOY_DIR }}
+            php artisan test
             git pull origin master
