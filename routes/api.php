@@ -35,8 +35,8 @@ Route::group(['as' => 'api.'], function () {
         Route::apiResource('users', UserController::class);
 
         // Offer
-        Route::get('offers/recomended', RecomendedOfferController::class);
-        Route::get('offers/favorite', FavoriteOfferController::class);
+        Route::get('offers/recomended', RecomendedOfferController::class)->name('offers.recomended');
+        Route::get('offers/favorite', FavoriteOfferController::class)->name('offers.favorite');
         Route::apiResource('offers', OfferController::class);
 
         // Favorite
