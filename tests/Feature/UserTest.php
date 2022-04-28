@@ -17,4 +17,22 @@ class UserTest extends TestCase
         // レスポンスの検証
         $response->assertOk();
     }
+
+    public function testUpdate()
+    {
+        $response = $this->withToken(env('BEARER_TOKEN'))
+            ->patch(
+                route('api.users.update', 1),
+                []
+            );
+
+        $response->assertOk();
+    }
+
+    public function testDestroy()
+    {
+        $response = $this->withToken(env('BEARER_TOKEN'))->delete(route('api.users.destroy', 1));
+
+        $response->assertOk();
+    }
 }

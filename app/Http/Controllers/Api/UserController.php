@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UpdateRequest;
+use App\Models\User;
+use App\UseCases\User\DestroyAction;
 use App\UseCases\User\ShowAction;
+use App\UseCases\User\UpdateAction;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -48,9 +52,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id, UpdateAction $action)
     {
-        //
+        $user = User::findOrFail($id);
+        $this->authorize('update', $user);
+        $response = $action($user, $request);
+        return $response;
     }
 
     /**
@@ -59,8 +66,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, DestroyAction $action)
     {
-        //
+        $user = User::findOrFail($id);
+        $this->authorize('delete', $user);
+        $response = $action($user);
+        return $response;
     }
 }
