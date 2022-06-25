@@ -16,9 +16,16 @@ https://app.swaggerhub.com/apis-docs/tooooofu24/DMND/1.0.0
 
 ## 使い方
 
-```
+```bash
 cp .env.sample .env
-./vendor/bin/sail up (docker-compose up?)
+# 初回はsailを含めた依存関係をインストールするために以下を実行
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
+./vendor/bin/sail up
 ./vendor/bin/sail artisan key:generate
 ./vendor/bin/sail artisan migrate --force
 ```
