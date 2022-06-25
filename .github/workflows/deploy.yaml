@@ -1,8 +1,13 @@
 name: deploy-to-vps
-on: [push]
+
+on:
+  push:
+    branches:
+      - master
 jobs:
   Deploy-to-VPS:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
